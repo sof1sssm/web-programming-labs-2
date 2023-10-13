@@ -1,0 +1,14 @@
+body {
+    background-color: pink; 
+}
+
+h1 {
+    font-size: 50pt;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 20px;
+}
+
+img {
+    width: 80%;
+    margin: 20px;
+}
