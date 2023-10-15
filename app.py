@@ -180,7 +180,12 @@ def cats():
 '''
 @app.route('/lab2/example')
 def example():
-    number_lab = '2'
-    group = 'ФБИ-12'
-    number_course = '3'
-    return render_template('example.html', number_lab=number_lab, group=group, number_course=number_course)
+    name, number_lab, group, number_course = 'Софья Андронова', 2, 'ФБИ-12', 3
+    fruits = [
+        {'name': 'яблоки', 'price': 100},
+        {'name': 'груши', 'price': 120},
+        {'name': 'апельсины', 'price': 80},
+        {'name': 'мандарины', 'price': 95},
+        {'name': 'манго', 'price': 321}
+    ]
+    return render_template('example.html', name=name, number_lab=number_lab, group=group, number_course=number_course, fruits=fruits)
