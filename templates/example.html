@@ -26,6 +26,11 @@
             <li>{{ f.name }}: {{ f.price }} &#x20bd;</li>
             {% endfor %}
         </ul>
+        <ol>
+            {% for f in books %}
+            <li>{{f.name}}: {{f.author}}, {{f.genre}}, {{f.pages}} стр.</li>
+            {% endfor %}
+        </ol>
     </main>
 
     <footer>

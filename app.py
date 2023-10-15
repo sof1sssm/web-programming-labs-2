@@ -188,4 +188,16 @@ def example():
         {'name': 'мандарины', 'price': 95},
         {'name': 'манго', 'price': 321}
     ]
-    return render_template('example.html', name=name, number_lab=number_lab, group=group, number_course=number_course, fruits=fruits)
+    books = [
+        {'author': 'Тургенев Иван', 'name': 'Ася', 'genre': 'Повесть', 'pages': 94},
+        {'author': 'Робертс Нора', 'name': 'Яд бессмертия', 'genre': 'Детектив', 'pages': 384},
+        {'author': 'Ремарк Эрих Мария', 'name': 'Триумфальная арка', 'genre': 'Роман', 'pages': 540},
+        {'author': 'Дойл Артур Конан', 'name': 'Долина ужаса', 'genre': 'Детектив', 'pages': 608},
+        {'author': 'Дойл Артур Конан', 'name': 'Знак четырех', 'genre': 'Детектив', 'pages': 192},
+        {'author': 'Маринина Александра', 'name': 'Иллюзия греха', 'genre': 'Детектив', 'pages': 448},
+        {'author': 'Ремарк Эрих Мария', 'name': 'Три товарища', 'genre': 'Роман', 'pages': 480},
+        {'author': 'Гоголь Николай', 'name': 'Ревизор', 'genre': 'Комедия', 'pages': 192},
+        {'author': 'Достоевский Фёдор', 'name': 'Преступление и наказание', 'genre': 'Роман', 'pages': 592},
+        {'author': 'Пушкин Александр', 'name': 'Пиковая дама', 'genre': 'Повесть', 'pages': 224},
+    ]
+    return render_template('example.html', name=name, number_lab=number_lab, group=group, number_course=number_course, fruits=fruits, books=books)
