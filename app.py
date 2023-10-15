@@ -206,3 +206,11 @@ def example():
 def lab2():   
     return render_template('lab2.html')
 
+@app.route("/lab2/kartinki")
+def kartinki():
+    name = 'Софья Андронова'
+    number_lab = '2'
+    group = 'ФБИ-12'
+    number_course = '3'
+
+    return render_template('kartinki.html', name=name, number_lab=number_lab, group=group, number_course=number_course)

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if name %} 
+                {{name}}. 
+            {% else %}
+                Анонимус.
+            {% endif %} 
+            Лабораторная работа {{number_lab}}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+</head>
+<body>
+    <header>
+        WEB-программирование, часть 2. {% if number_lab %}Лабораторная работа {{number_lab}}{% endif %}
+    </header>
+
+    <main> 
+        <h1 style="text-align: center;"> Картинки </h1>
+        <div style="font-size: 30px; text-align: left;">Цветы</div>
+        <img src = "/static/flowers.jpg" style="width: 400px; ">
+        <div style="position: absolute; left: 450px; top: 200px; width: 500px;">
+            Цветы имеют важнейшее значение в культуре большинства 
+            народов. Где-то они используются для украшения, где-то 
+            служат знаком внимания, а где-то и вовсе почитаются, как, 
+            например, в некоторых странах Африки. Казалось бы — это ведь 
+            всего лишь органы размножения растений, но человечество сделало 
+            из них настоящий культ, и уже многие сотни лет в большинстве 
+            уголков Земли букет цветов служит универсальным подарком.
+        </div>
+
+        <div style="font-size: 30px; text-align: left;">Ягоды</div>
+        <img src = "/static/yagodi.jpg" style="width: 400px; ">
+        <div style="position: absolute; left: 450px; top: 550px; width: 500px;">
+            Отличие ягод и плодов состоит в том, что у ягод, как правило,
+            нет плотной кожуры и много семечек внутри, а у плодов в наличии 
+            и кожура, и косточка, а иногда и несколько семечек. Но и тут не 
+            обходится без исключений.
+        </div>
+
+        <div style="font-size: 30px; text-align: left;">Машины</div>
+        <img src = "/static/carr.jpg" style="width: 400px; ">
+        <div style="position: absolute; left: 450px; top: 900px; width: 500px;">
+            В 1930 году американцы Чарльз Крейтон и Джеймс Харгис 
+            совершили путешествие на автомобиле из Нью-Йорка в Лос-Анджелес 
+            и обратно. Изюминка была в том, что весь путь 
+            (более 11 тысяч километров) они преодолели на заднем ходе.
+        </div>
+
+        <div style="font-size: 30px; text-align: left;">Мебель</div>
+        <img src = "/static/mebel.jpg" style="width: 400px; ">
+        <div style="position: absolute; left: 450px; top: 1250px; width: 500px;">
+            Появление мебели относят ко времени, когда кочевые племена 
+            стали переходить к оседлому образу жизни. Люди начали заботиться 
+            об удобствах. Первыми материалами для мебели были деревянные прутья 
+            и шкуры животных. Из них делались лежанки, детские колыбельки, 
+            корзины для хранения овощей и фруктов. Всё это история не сохранила. 
+            Зато до наших дней дошли интересные факты о мебели.
+        </div>
+
+        <div style="font-size: 30px; text-align: left;">Энергетики</div>
+        <img src = "/static/energi.jpg" style="width: 400px; ">
+        <div style="position: absolute; left: 450px; top: 1550px; width: 500px;">
+            Энергетики вредят здоровью. Причём вредят организму именно витамины. 
+            Речь идёт о витаминах группы В. Больше всего в энергетических 
+            напитках витамина В12: в 100 мг - 130 % от суточной нормы. Также 
+            много в энергетиках витамина В6, В2. Если в организме будет 
+            слишком много витамина В2 и В6, то это приведёт к дистрофии печени. 
+            Кроме того, самыми опасными токсичными считаются витамины В6 и В12.
+        </div>
+    </main>
+
+    <footer>
+        &copy;
+        {% if name %} 
+            {{name}}, 
+        {% else %}
+            Анонимус,
+        {% endif %}
+
+        {% if group %} 
+            {{group}}, 
+        {% else %}
+            нет группы,
+        {% endif %}
+
+        {% if number_course %} 
+            {{number_course}} 
+        {% else %}
+            0
+        {% endif %} курс, 
+        2023
+    </footer>
+
+</body>
+</html>
