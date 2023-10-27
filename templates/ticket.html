@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 3 {% endblock %}
+
+{% block main %}
+<h1>Покупка билета</h1>
+
+<form action="/lab3/forma">
+    <labeL>ФИО:</label>
+        <input class="ticket_forma" type="text" name="FIO" value="{{F10 or ''}}">
+        <span class="errors">{{ errors.FIO}}</span>
+
+    <div>Тип билета</div>
+    <label>
+        <input class="ticket_forma" type="radio" value="children" name="ticket" checked> Детский
+    </label>
+    <label>
+        <input class="ticket_forma" type="radio" value="adult" name="ticket" checked> Взрослый
+    </label>
+    <div>Тип полки</div>
+    <label>
+        <input class="ticket_forma" type="radio" value="down" name="polka" > Нижняя
+    </label>
+    <label>
+        <input class="ticket_forma" type="radio"  value="up" name="polka" > Верхняя
+    </label>
+    <label>
+        <input class="ticket_forma" type="radio"  value="side-up" name="polka" > Верхняя боковая
+    </label>
+    <label>
+        <input class="ticket_forma" type="radio" value="side-down"  name="polka" > Нижняя боковая
+    </label>
+    <div>Есть ли багаж?</div>
+    <label>
+        <input class="ticket_forma" type="radio" value="yes" name="bagg" > Да
+    </label>
+    <label>
+        <input class="ticket_forma" type="radio" value="no" name="bagg" > Нет
+    </label>
+
+    <div>Ваш возраст:</div>
+    <div>
+        <input class="ticket_forma" type="number" name="age" value="{{ age or '' }}">
+        <span class="errors">{{errors.age }}</span>
+    </div>
+
+    <div>Пункт выезда:</div>
+    <div>
+        <input class="ticket_forma" type="text"  name="arr" value="{{ arr or '' }}">
+        <span class="errors">{{errors.arr }}</span>
+    </div>
+
+    <div>Пункт назначения:</div>
+    <div>
+        <input class="ticket_forma" type="text" name="naznach" value="{{ naznach or '' }}">
+        <span class="errors">{{errors.naznach }}</span>
+    </div>
+
+    <div>Дата поездки:</div>
+    <div>
+        <input class="ticket_forma" type="date" name="data1" value="{{ data or '' }}">
+    </div>
+
+    <div>
+        <button class="ticket_forma" type="submit">Сформировать билет</button>
+    </div>
+</form>
+{% endblock%}
+
