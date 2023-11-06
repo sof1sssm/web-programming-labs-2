@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 3 {% endblock %}
+
+{% block main %}
+<h1>Результат</h1>
+<div>
+    Температура: {{ temp }} &#x2103; <span class="snow">{{ snow }}</span> 
+</div>
+
+<div>
+    <a href="/lab4/xolod">Установить другую температуру</a>
+</div>
+
+
+{% endblock %}
+
