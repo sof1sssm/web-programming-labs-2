@@ -65,3 +65,47 @@ def xolodil():
 def temper():
     return render_template('temper.html')
 
+
+@lab4.route('/lab4/zerno',methods = ['GET', 'POST'] )
+def zerno():
+    if request.method =='GET':
+        return render_template('zerno.html')
+    grain=request.form.get('grain')
+    weight=request.form.get('weight')
+    error=''
+
+    if weight=='':
+        error='Не ввели вес'
+    else:
+        weight=int(weight)
+
+        if weight>50:
+            sale=0.9
+            message='Применена скидка за большой объем'
+        else:
+            sale=1
+            message=''
+
+    if grain =='ячмень':
+        price= 12000*weight*sale
+    elif grain=='овёс':
+        price= 8500*weight*sale
+    elif grain=='пшеница':
+        price=8700*weight*sale
+    else:
+        price=14000*weight*sale
+    if (weight>0) and (501>weight):
+        return render_template('formazerna.html',grain=grain, weight=weight,
+                                   price=price, message=message)
+    if (weight<0) or weight==0:
+        error = 'Неверное значение веса'
+    elif weight> 500:
+        error = 'Объем отстутствует в магазине'
+    return render_template('zerno.html', grain=grain, weight=weight, error=error)
+
+
+@lab4.route('/lab4/formazerna')
+def formazerna():
+    return render_template('formazerna.html')
+
+
