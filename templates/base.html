@@ -11,6 +11,8 @@
     <style>
         body {
             color: {{ request.cookies.get('color') }};
+            background: {{ request.cookies.get('color') }};
+            text: {{ request.cookies.get('text') }};
         }
     </style>
     {% endif %}
@@ -29,6 +31,6 @@
     <footer>
         &copy; Софья Андронова, ФБИ-12, 3 курс, 2023
     </footer>
-    
+
 </body>
 </html>
