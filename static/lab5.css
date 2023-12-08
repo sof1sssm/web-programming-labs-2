@@ -1,0 +1,64 @@
+footer {
+    background-color: hotpink;
+    color: aliceblue; 
+    padding: 5px;
+    font-size: 11pt;
+    font-style: italic;
+    text-align: right;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position: fixed;
+}
+
+body {
+    background-color: pink; 
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family:cursive
+
+}
+
+header {
+    background-color: hotpink;
+    color: aliceblue; 
+    padding: 5px;
+    font-size: 16pt;
+
+}
+
+h1 {
+  font-size: 25px;
+}
+
+div {
+  margin-top: 10px;
+  display:flex;
+  justify-content: space-between;
+}
+
+div a {
+  padding: 10px;
+  text-decoration: none;
+  color: #000000;
+  height: 25px;
+}
+
+div a:hover {
+  background-color:rgba(104, 104, 104, 0.568);
+}
+
+.log {
+  border: solid; 
+  border-radius: 20%; 
+  border-color:deeppink; 
+  margin-right: -20px;
+}
+
+.reg {
+  border: solid; 
+  border-radius: 20%; 
+  border-color:deeppink; 
+  background-color: hotpink;
+  margin-right: -20px;
+}
