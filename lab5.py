@@ -269,5 +269,12 @@ def view_article():
 
     # Пользователь не авторизован
     return redirect("/lab5/login")
+
+
+@lab5.route("/lab5/logout")
+def logout():
+    session.clear()
+    return redirect('/lab5/login')
+
     
 
