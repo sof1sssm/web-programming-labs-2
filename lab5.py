@@ -53,6 +53,7 @@ def users():
 
     return render_template("users.html", result=result)
 
+
 @lab5.route('/lab5/register', methods=["GET", "POST"])
 def registerPage():
     errors = []
@@ -112,7 +113,6 @@ def registerPage():
     return redirect("/lab5/login")
 
 
-
 @lab5.route('/lab5/login', methods=["GET", "POST"])
 def loginPage():
     errors = []
@@ -162,7 +162,7 @@ def loginPage():
         return render_template("login.html", errors=errors, username = visibleUser)
     
 
-    @lab5.route('/lab5/new_article', methods=['GET', 'POST'])
+@lab5.route('/lab5/new_article', methods=['GET', 'POST'])
 def createArticle():
     errors = []
     visibleUser = "Anon"
@@ -189,7 +189,7 @@ def createArticle():
             conn = dbConnect()
             cur = conn.cursor()
 
-           cur.execute(f"INSERT INTO articles(user_id, title, articl_text) VALUES (%s, %s, %s) RETURNING id;", (userID, title, text_article))
+            cur.execute(f"INSERT INTO articles(user_id, title, articl_text) VALUES (%s, %s, %s) RETURNING id;", (userID, title, text_article))
             # получаем id от вновь созданной записи.
             # в нашем случае мы будем получать статьи след образом
             # /lab5/article/id_article
@@ -206,7 +206,6 @@ def createArticle():
 
         # пользователь не авторизован, отправить на стр логина
         return redirect ("/lab5/login")
-
 
 
 # конструкция /<string:article_id> позволяет нам
