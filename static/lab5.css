@@ -31,12 +31,6 @@ h1 {
   font-size: 25px;
 }
 
-div {
-  margin-top: 10px;
-  display:flex;
-  justify-content: space-between;
-}
-
 div a {
   padding: 10px;
   text-decoration: none;
