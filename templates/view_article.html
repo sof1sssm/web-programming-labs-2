@@ -9,16 +9,23 @@
         <a href="http://127.0.0.1:5000/lab5/new_article" style="margin-left: -40px;">Создать заметку</a>
         <a href="http://127.0.0.1:5000/lab5/login" class="log">Логин</a>
         <a href="http://127.0.0.1:5000/lab5/register" class="reg">Регистрация</a>
-        <a href="http://127.0.0.1:5000/lab5/view_article">Просмотреть заметки</a>
         <p>{{username}}</p>
     </div>
     <hr size="1">
 
+
     <div>
-        <h1>{{ article_title }}</h1>
-        {% for paragraph in article_text %}
-            <p>{{ paragraph }}</p>
-        {% endfor %}
+        <h1>Заметки {{username}}</h1>
+        <ol>
+            {% for article in articles %}
+                <li style="margin-bottom: 20px; 
+                            border: 2px solid; 
+                            border-radius: 5px;">
+                    <a href="/lab5/articles/{{ article.id }}">{{ article.title }}</a>
+                </li>
+            {% endfor %}
+        </ol>
     </div>
 
 {% endblock %}
+
