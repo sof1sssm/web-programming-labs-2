@@ -1,4 +1,5 @@
-from flask import redirect, render_template, request, Blueprint 
+from werkzeug.security import check_password_hash, generate_password_hash
+from flask import redirect, render_template, request, Blueprint, session
 import psycopg2
 
 lab5 = Blueprint('lab5', __name__)
@@ -19,6 +20,7 @@ def dbClose(cursor, connection):
 @lab5.route("/lab5")
 def main():
     visibleUser = "Anon"
+    visibleUser = session.get("username") 
 
     return render_template("lab5.html", username = visibleUser)
 
@@ -73,6 +75,8 @@ def registerPage():
         print(errors) 
         return render_template("register.html", errors=errors)
 
+    # получаем пароль от пользователя, хэшируем его
+    hashPassword = generate_password_hash(password)
     # Если мы попали сюда, значит username и password заполненны
     # Подключаемся к БД
     conn = dbConnect()
@@ -96,11 +100,60 @@ def registerPage():
 
     # Если мы попали сюда, то значит в cur.fetchone нет ни одной строки
     # значит пользователя с таким же логином не существует
-    cur.execute(f"INSERT INTO users (username, password) VALUES ('{username}','{password}');")
+    cur.execute(f"INSERT INTO users (username, password) VALUES ('{username}','{hashPassword}');") 
+    # сохраняем пароль в виде хэша в БД
 
     # делаем commit - т.е. фиксируем изменения
     conn.commit()
     dbClose(cur, conn)
 
     return redirect("/lab5/login")
+
+
+
+@lab5.route('/lab5/login', methods=["GET", "POST"])
+def loginPage():
+    errors = []
+
+    if request.method == "GET":
+        return render_template("login.html", errors=errors)
+
+    username = request.form.get("username")
+    password = request.form.get("password")
+
+    if not (username or password):
+        errors.append("Пожалуйста заполните все поля")
+        return render_template("login.html", errors=errors)
+
+    conn = dbConnect()
+    cur = conn.cursor()
+
+    cur.execute(f"SELECT id, password FROM users WHERE username = '{username}'")
+
+    result = cur.fetchone()
+
+    if result is None:
+        errors.append("Неправильный логин или пароль")
+        dbClose(cur, conn)
+        return render_template("login.html", errors=errors)
+
+    userID, hashPassword = result
+
+    # с помощью check_password_hash сравниваем хеш и 
+    # пароль из БД. Функция "check_password_hash"
+    # сама переведет password  в хэш
+    if check_password_hash(hashPassword, password):
+        # пароль правильный
+
+        # сохраняем id и username
+        # в сессию (JWT токен)
+        session['id'] = userID
+        session['username'] = username
+        dbClose(cur, conn)
+        return redirect("/lab5")
+
+    else:
+        errors.append("Неправильный логин или пароль")
+        return render_template("login.html", errors=errors)
+
 
