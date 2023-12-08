@@ -1,0 +1,41 @@
+
+{% extends "base5.html" %}
+
+{% block lab %} Лабораторная работа 5 {% endblock %}
+
+{% block main %}
+    <form method="POST" > 
+        <h1 style="text-align: center;">Страница регистрации</h1>
+
+        <div class="pole">
+            <label style="color:darkslategrey; 
+                            
+                            font-size: small;" for="username">Логин</label> <br>               
+            <input style="width: 200px; 
+                            outline: none; 
+                            border: none;" 
+                    type="text" name="username" placeholder="username" > 
+        </div>
+
+        <div class="pole" style="margin-bottom: 10px; ">
+            <label style="color:darkslategrey; 
+                        text-align: left; 
+                        font-size: small;" for="password">Пароль</label>
+            <input style="width: 200px; 
+                            outline: none; 
+                            border: none;" 
+                type="text" name="password" placeholder="password"> 
+        </div>
+
+        <div style="display: block; text-align: center;">
+            <button  style="font-size: large;" type="submit"> 3арегистрироваться </button>
+        </div>
+        <div style="display: block; text-align: center;">
+            {% for error in errors %}
+            <p class="error">{{ error }}</p>
+        {% endfor %}
+        </div>
+
+    </form>
+
+{% endblock %}

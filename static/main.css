@@ -1,35 +1,28 @@
 body {
-    margin: 0;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: pink; 
 }
-
 main {
-    margin-bottom: 40 px;
     padding: 10px;
+
 }
 
 header {
-    margin-bottom: 30px;
-    padding: 20px;
-    background: lightgray;
+    background-color: hotpink;
+    color: aliceblue; 
+    padding: 5px;
+    font-size: 16pt;
 }
-
 footer {
-    margin-top: 20 px;
-    padding: 10px;
-    background: lightgray;
+    background-color: hotpink;
+    color: aliceblue; 
+    padding: 5px;
+    font-size: 11pt;
+    font-style: italic;
     text-align: right;
-    position: fixed;
     bottom: 0;
-    left: 0;
     right: 0;
-}
-
-.error {
-    background-color: red;
-}
-
-.ticket_forma {
-
-    background-color: purple;
-    margin: 5px;
+    left: 0;
+    position: fixed;
 }
