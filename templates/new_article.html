@@ -1,21 +1,32 @@
 {% extends "base5.html" %}
 
-{% block lab %} Лабораторная работа 5 {% endblock %}
+{% block lab %} Лабораторная работа {{numLab}}{% endblock %}
 
 {% block main %}
-    <div style="margin-top: 10px;display:flex;justify-content: space-between;">
-        <h1>База знаний</h1>
-        <a href="http://127.0.0.1:5000/lab5/view_article">Просмотреть заметки</a>
-        <a href="http://127.0.0.1:5000/lab5/new_article" style="margin-left: -40px;">Создать заметку</a>
-        <a href="http://127.0.0.1:5000/lab5/login" class="log">Логин</a>
-        <a href="http://127.0.0.1:5000/lab5/register" class="reg">Регистрация</a>
-        <p>{{username}}</p>
+    {% if username %}
+        <div style="margin-top: 10px;display:flex;justify-content: space-between;">
+            <h1><a href="http://127.0.0.1:5000/lab5">База знаний</a></h1>
+            <a href="http://127.0.0.1:5000/lab5/view_article">Просмотреть заметки</a>
+            <a href="http://127.0.0.1:5000/lab5/new_article" style="margin-left: -40px;">Создать заметку</a>
+            <a href="http://127.0.0.1:5000/lab5/login" class="log">Логин</a>
+            <a href="http://127.0.0.1:5000/lab5/register" class="reg">Регистрация</a>
+            <p>{{username}}</p>
+        </div>
+    {% else %}
+        <div style="margin-top: 10px;display:flex;justify-content: space-between;">
+        <h1><a href="http://127.0.0.1:5000/lab6">База знаний</a></h1>
+        <a href="http://127.0.0.1:5000/lab6/articles">Просмотреть заметки</a>
+        <a href="http://127.0.0.1:5000/lab6/new_article" style="margin-left: -40px;">Создать заметку</a>
+        <a href="http://127.0.0.1:5000/lab6/login" class="log">Логин</a>
+        <a href="http://127.0.0.1:5000/lab6/register" class="reg">Регистрация</a>
+        <p>{{ current_user.username }}</p>
     </div>
+    {% endif %}
     <hr size="1">
 
     <div>
         <h1>Новая замтека</h1>
-
+        
         <div style="display: block; text-align: center;">
             {% for error in errors %}
                 <p class="error">{{ error }}</p>
