@@ -5,7 +5,7 @@
 {% block main %}
     {% if username %}
         <div style="margin-top: 10px;display:flex;justify-content: space-between;">
-            <h1>База знаний</h1>
+            <h1><a href="http://127.0.0.1:5000/lab5">База знаний</a></h1>
             <a href="http://127.0.0.1:5000/lab5/view_article">Просмотреть заметки</a>
             <a href="http://127.0.0.1:5000/lab5/new_article" style="margin-left: -40px;">Создать заметку</a>
             <a href="http://127.0.0.1:5000/lab5/login" class="log">Логин</a>
@@ -14,7 +14,7 @@
         </div>
     {% else %}
         <div style="margin-top: 10px;display:flex;justify-content: space-between;">
-        <h1>База знаний</h1>
+        <h1><a href="http://127.0.0.1:5000/lab6">База знаний</a></h1>
         <a href="http://127.0.0.1:5000/lab6/articles">Просмотреть заметки</a>
         <a href="http://127.0.0.1:5000/lab6/new_article" style="margin-left: -40px;">Создать заметку</a>
         <a href="http://127.0.0.1:5000/lab6/login" class="log">Логин</a>
@@ -26,5 +26,28 @@
     <hr size="1">
 
     <div>
+        <h1>{{ article_title }}</h1>
+        {% for paragraph in article_text %}
+            <p>{{ paragraph }}</p>
+        {% endfor %}
+    </div>
+    <form method="POST" action="/lab6/articles/{{ article_id }}/publish">
+        <input type="hidden" name="is_public" value="True">
+        <button type="submit">Опубликовать</button>
+    </form>
+    <form method="POST" action="/lab6/articles/{{ article_id }}/favorite">
+        {% if is_favorite == True %}
+            <input type="hidden" name="is_favorite" value="False">
+            <button type="submit">Убрать из избранного</button>
+        {% else %}
+            <input type="hidden" name="is_favorite" value="True">
+            <button type="submit">Добавить в избранное</button>
+        {% endif %}
+    </form>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
 
-        
+{% endblock %}
+
+
