@@ -19,15 +19,15 @@ function fillCourselist() {
 
             let editButton = document.createElement('button')
             editButton.innerText = 'редактировать';
-            // editButton.onclick = function() {
-            //     editCourse(i, courses[i]);
-            // }
+            editButton.onclick = function() {
+                editCourse(i, courses[i]);
+            }
 
             let delButton = document.createElement('button')
             delButton.innerText = 'удалить';
-            // delButton.onclick = function() {
-            //     deleteCourse(i);
-            // }
+            delButton.onclick = function() {
+                deleteCourse(i);
+            }
 
             let tdActions = document.createElement('td');
             tdActions.append(editButton);
@@ -41,5 +41,16 @@ function fillCourselist() {
             tbody.append(tr);
         }
     })
+}
+
+
+function deleteCourse(num) {
+    if(! confirm('Вы точно хотите удалить данный курс?'))
+        return;
+
+    fetch(`/lab8/api/courses/${num}`, {method: "DELETE"})
+    .then(function () {
+        fillCourseList();
+    });
 }
 
