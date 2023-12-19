@@ -8,7 +8,7 @@
 
 {% block main %}
     <h1>Заказ напитка</h1>
-
+    
     <div>Напиток</div>
     <label>
         <input type="radio" value="cofee" name="drink" checked>Кофе 
@@ -30,7 +30,24 @@
     <div>
         <button onclick="getPrice()" type="submit">Рассчитать цену</button>
     </div>
+
     <div id="price"></div>
 
-{% endblock %}
+    <div id="pay" style="display: none;">
+        <div>Номер банковской карты:</div>
+        <label><input class="text_input_form" type="text" name="card"></label>
+        <div>Имя держателя карты:</div>
+        <label><input class="text_input_form" type="text" name="name"></label>
+        <div>Номер CVV:</div>
+        <label><input class="text_input_form" type="text" name="cvv" size="3"></label>
+        <div><br><button class="text_input_form" type="submit" onclick="pay()">Оплатить</button></div>
+        <button onclick="refund()" id="refund" type="submit" style="display: none;">Отмена оплаты</button>
+        <br>
+        <div id="error" style="color: red;"></div>
 
+        <h3><div id="result"></div></h3>
+        <br>
+
+    </div>
+
+{% endblock %}
