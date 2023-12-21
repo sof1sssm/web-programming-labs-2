@@ -5,7 +5,7 @@ function fillCourseList() {
     })
     .then(function (courses) {
         let tbody = document.getElementById('course-list');
-        tbody.innerHTML = '';
+        tbody.innerHTML = ''; 
         for(let i = 0; i<courses.length; i++) {
             tr = document.createElement('tr');
             let tdName = document.createElement('td');
@@ -16,6 +16,9 @@ function fillCourseList() {
 
             let tdPrice = document.createElement('td');
             tdPrice.innerText = courses[i].price || 'бесплатно';
+
+            let tdDate = document.createElement('td');
+            tdDate.innerText = courses[i].created_date;
 
             let editButton = document.createElement('button')
             editButton.innerText = 'редактировать';
@@ -33,13 +36,11 @@ function fillCourseList() {
             tdActions.append(editButton);
             tdActions.append(delButton);
 
-            let tdCreatedDate = document.createElement('td');
-            tdCreatedDate.innerText = courses[i].created_date;
-
             tr.append(tdName);
             tr.append(tdVideos);
             tr.append(tdPrice);
             tr.append(tdActions);
+            tr.append(tdDate);
 
             tbody.append(tr);
         }
@@ -102,7 +103,7 @@ function sendCourse() {
 }
 
 
-function editCourse(num,course){
+function editCourse(num,course) {
     document.getElementById('num').value=num;
     document.getElementById('name').value=course.name;
     document.getElementById('videos').value=course.videos;
