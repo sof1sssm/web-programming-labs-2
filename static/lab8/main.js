@@ -1,4 +1,4 @@
-function fillCourselist() {
+function fillCourseList() {
     fetch('/lab8/api/courses/')
     .then(function (data) {
         return data.json();
@@ -32,6 +32,9 @@ function fillCourselist() {
             let tdActions = document.createElement('td');
             tdActions.append(editButton);
             tdActions.append(delButton);
+
+            let tdCreatedDate = document.createElement('td');
+            tdCreatedDate.innerText = courses[i].created_date;
 
             tr.append(tdName);
             tr.append(tdVideos);
@@ -84,6 +87,7 @@ function sendCourse() {
         price: document.getElementById('price').value,
     };
 
+
     const url = `/lab8/api/courses/${num}`;
     const method = num ? 'PUT' : 'POST';
     fetch(url, {
@@ -92,8 +96,8 @@ function sendCourse() {
         body: JSON.stringify(course),
     })
     .then(function() {
-        fillCourseList(); // перезагрузка таблицы
-        hideModal(); // закрытие модального окна
+        fillCourseList(); 
+        hideModal(); 
     });
 }
 

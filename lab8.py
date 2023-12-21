@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, request, abort, jsonify
+from datetime import datetime
 
 lab8 = Blueprint("lab8", __name__)
 
@@ -9,9 +9,10 @@ def main():
 
 
 courses = [
-    {"name": "c++", "videos": 3,"price": 3000},
-    {"name": "basic", "videos": 30,"price": 0},
-    {"name": "c#", "videos": 8} #если цена не указана, то курс бесплатный
+    {"name": "c++", "videos": 3,"price": 3000, "created_date": datetime.now()},
+    {"name": "basic", "videos": 30,"price": 0, "created_date": datetime.now()},
+    {"name": "c#", "videos": 8, "created_date": datetime.now()} 
+    #если цена не указана, то курс бесплатный
 ]
 
 
@@ -41,8 +42,11 @@ def del_course(course_num):
 #Редактирование существующего курса
 @lab8.route('/lab8/api/courses/<int:course_num>', methods=['PUT'])
 def put_course(course_num):
+    course = request.get_json()
     if course_num < 0 or course_num > len(courses)-1:
         abort(404, "Course not found")
+
+
     course = request.get_json()
     courses[course_num] = course
     return courses[course_num]
@@ -52,6 +56,7 @@ def put_course(course_num):
 @lab8.route('/lab8/api/courses/', methods=['POST'])
 def add_course():
     course = request.get_json()
+    course['created_date'] = datetime.now()
     courses.append(course)
     return {"num": len(courses)-1}
 
