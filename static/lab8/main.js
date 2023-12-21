@@ -76,23 +76,24 @@ function addCourse(){
 }
 
 
-function sendCourse(){
-    const course={
-        name:document.getElementById('name').value,
-        videos:document.getElementById('videos').value,
-        price:document.getElementById('price').value
-    }
+function sendCourse() {
+    const num = document.getElementById('num').value;
+    const course = {
+        name: document.getElementById('name').value,
+        videos: document.getElementById('videos').value,
+        price: document.getElementById('price').value,
+    };
 
-    const url=`/lab8/api/courses/${num}`;
-    const method=num ? 'PUT':'POST';
-    fetch(url,{
-        method:method,
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify(course)
+    const url = `/lab8/api/courses/${num}`;
+    const method = num ? 'PUT' : 'POST';
+    fetch(url, {
+        method: method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(course),
     })
-    .then(function(){
-        fillCourselist();
-        hideModal;
+    .then(function() {
+        fillCourseList(); // перезагрузка таблицы
+        hideModal(); // закрытие модального окна
     });
 }
 
