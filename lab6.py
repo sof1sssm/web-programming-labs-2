@@ -215,24 +215,23 @@ def createArticle():
 def main6lab():
     if current_user is not None and current_user.is_authenticated:
         visibleUser = current_user.username
-    else:
-        visibleUser = 'Anon'
-    # public_articles = db.session.query(articles.title, 
-    #                 articles.article_text, 
-    #                 users.username
-    #                 ).join(users, articles.user_id == users.id
-    #                 ).filter(articles.is_public == True)
-    public_articles = db.session.query(
+        public_articles = db.session.query(
                         articles.title,
                         articles.article_text,
-                        articles.Likes,
                         users.username,
                         ).join(users, articles.user_id == users.id,
                         ).filter(articles.is_public == True, articles.user_id == current_user.id
                         ).order_by(articles.is_favorite.desc())
+    else:
+            visibleUser = 'Anon'
+            public_articles = db.session.query(articles.title, 
+                            articles.article_text, 
+                            users.username
+                            ).join(users, articles.user_id == users.id
+                            ).filter(articles.is_public == True)
+            
 
     return render_template("lab6.html", username = visibleUser, public_articles=public_articles)
-
 
 
 @lab6.route("/lab6/logout")
