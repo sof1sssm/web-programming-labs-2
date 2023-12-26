@@ -70,3 +70,8 @@ def refund(params):
     return {"result":f'Деньги возвращены на карту {card_num} в сумме {price}','error': None}
 
 
+@lab7.route('/lab7/zach/')
+def zach():
+    return render_template('zach.html')
+
+
