@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 9 {% endblock %}
+
+{% block script %} {% endblock %}
+
+{% block main %}
+    <title>Открытка с поздравлением</title>
+
+    <h1>С Новым Годом!</h1>
+    <p>{% if recipient_gender == 'female' %}{{ recipient_name }},
+         Желаю быть счастливой{% else %}{{ recipient_name }}, 
+         Желаю быть счастливым{% endif %}!</p>
+    <p>От {{ sender_name }}</p>
+{% endblock %}
+
