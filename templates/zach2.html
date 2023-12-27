@@ -1,0 +1,25 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Fetch products from dummyjson.com</title> 
+    <script> 
+        fetch('https://dummyapi.io/data/api/products', { 
+            headers: { 
+                'app-id': '658bde3dc10aa6680fd4b2e2' // Ваш ID приложения, полученный после регистрации на dummyjson.com 
+            } 
+        }) 
+        .then(response => response.json()) 
+        .then(data => { 
+            const category = 'motorcycle'; // Название категории, из которой нужно получить товары 
+            // Фильтруем товары по указанной категории 
+            const filteredProducts = data.filter(product => product.category === category); 
+            // Выводим товары в консоль 
+            console.log(filteredProducts); 
+        }) 
+        .catch(error => console.error(error)); 
+    </script> 
+</head> 
+<body> 
+</body> 
+</html>
+
